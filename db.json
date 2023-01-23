@@ -1,0 +1,38 @@
+{
+  "coursesList": [
+    {
+      "courseName": "Angular 1",
+      "category": "Frameworks",
+      "level": "Básico",
+      "price": 100.34,
+      "description": "Curso básico de Angular",
+      "id": 1
+    },
+    {
+      "courseName": "React 1",
+      "category": "Frameworks",
+      "level": "Básico",
+      "price": 23.5,
+      "description": "Curso introductorio de React",
+      "id": 2
+    }
+  ],
+  "usersList": [
+    {
+      "usuario": "userX",
+      "password": "123",
+      "profile": "Jefe",
+      "id": 1
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
