@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 //import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -9,34 +10,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  form: FormGroup;
+  form!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
-      usuario: ['', Validators.required],
-      password: ['', Validators.required]
+  constructor(private asAuthService: AuthService) {}
+
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      email: new FormControl('',[Validators.required, Validators.email]),
+      password: new FormControl('',[Validators.required, Validators.minLength(6), Validators.maxLength(12)])
     })
   }
 
-  ngOnInit(): void { }
-
   ingresar() {
-    const usuario = this.form.value.usuario;
-    const password = this.form.value.password;
-
-    console.log(usuario);
-    console.log(password);
-
-    if (usuario == 'jperez' && password == 'admin123') {
-      //redirect al dashboard
-    } else {
-      //Mostrar mensaje de error
-      this.error();
-    }
-  }
-
-  error() {
-    console.log('Error')
+    const { email,password } = this.form.value;
+    this.asAuthService.sendCredentials(email,password);
   }
 
 }
