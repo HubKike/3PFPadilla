@@ -13,9 +13,8 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
-    path: 'cursos',
-    loadChildren: () => import('./cursos/cursos.module').then(m => m.CursosModule),
-    canActivate: [AuthGuard]
+    path: 'cursos', canActivate: [AuthGuard],
+    loadChildren: () => import('./cursos/cursos.module').then(m => m.CursosModule)
   },
   {
     path: '404',
