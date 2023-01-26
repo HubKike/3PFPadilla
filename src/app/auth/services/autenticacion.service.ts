@@ -34,6 +34,7 @@ export class AutenticacionacionService {
     }
 
     localStorage.setItem("sesion", JSON.stringify(this.sesion));
+    console.log("sesion guardada")
 
   }
 
